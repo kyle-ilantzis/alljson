@@ -9,7 +9,9 @@ module.exports = {
     return read === null ? {} : JSON.parse( read );
   },
 
-  saveAllJSON: (file,json) => {
-    fs.writeFileSync(file,JSON.stringify(json));
+  saveAllJSON: (file,json,pretty) => {
+    var replacer = null;
+    var space = !!pretty ? '\t' : null;
+    fs.writeFileSync(file,JSON.stringify(json, replacer, space));
   }
 }
